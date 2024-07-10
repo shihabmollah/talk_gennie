@@ -69,7 +69,7 @@ const Main = () => {
             <AnimatedBackground />
 
             <div className="nav">
-                <p>Talk</p>
+                <p>TalkGenie</p>
                 {/* Wrap the motion.img inside an <a> tag */}
                 <a href="https://github.com/shihabmollah" target="_blank" rel="noopener noreferrer">
                     <motion.img
