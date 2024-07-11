@@ -20,14 +20,15 @@
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
-.main .nav p{
+
+.main .nav p {
     font-size: 50px;
-    
 }
 
 .main-container {
     max-width: 900px;
     margin: auto;
+    padding: 0 20px; /* Added padding for smaller screens */
 }
 
 .main-container .greet {
@@ -96,9 +97,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 10px; /* Reduced gap */
     background-color: #f0f4f9;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Reduced padding */
     border-radius: 50px;
 }
 
@@ -119,7 +120,7 @@
 .search-box div {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px; /* Reduced gap */
 }
 
 .main .bottom-info {
@@ -187,4 +188,52 @@
     font-size: 17px;
     font-weight: 300px;
     line-height: 1.8;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .main-container .greet {
+        font-size: 32px; /* Adjust font size for smaller screens */
+        margin: 30px 0;
+    }
+
+    .main .cards {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+    }
+
+    .main .card {
+        height: 150px; /* Adjust card height for smaller screens */
+        padding: 10px;
+    }
+
+    .main .card p {
+        font-size: 14px; /* Adjust font size in cards */
+    }
+
+    .main-bottom {
+        padding: 0 10px; /* Reduce padding */
+    }
+
+    .search-box {
+        flex-direction: column; /* Stack input and icons vertically */
+        gap: 5px; /* Adjust gap */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .search-box input {
+        font-size: 16px; /* Adjust input font size */
+    }
+
+    .search-box div {
+        width: 100%; /* Make icon container full width */
+        justify-content: space-between; /* Distribute icons evenly */
+    }
+
+    .search-box img {
+        width: 20px; /* Adjust icon size */
+    }
+
+    .main .bottom-info {
+        font-size: 11px; /* Adjust bottom info font size */
+    }
 }
