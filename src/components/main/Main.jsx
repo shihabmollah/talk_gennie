@@ -30,6 +30,7 @@ const Main = () => {
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript; // Get the recognized text
             setInput(transcript); // Set the recognized text as input
+            onSent(); // Call onSent function to process the input
         };
 
         recognition.onend = () => {

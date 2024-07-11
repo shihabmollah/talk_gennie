@@ -13,6 +13,10 @@ const Sidebar = () => {
         await onSent(prompt);
     };
 
+    const toggleSidebar = () => {
+        setExtended((prev) => !prev);
+    };
+
     const sidebarVariants = {
         open: { width: "250px", transition: { duration: 0.5 } },
         closed: { width: "80px", transition: { duration: 0.5 } },
@@ -22,7 +26,7 @@ const Sidebar = () => {
         <motion.div
             className="sidebar"
             initial="closed"
-            animate={extended ? "open" : "closed"} // <-- Added closing curly brace
+            animate={extended ? "open" : "closed"}
             variants={sidebarVariants}
         >
             <div className="top">
@@ -30,51 +34,53 @@ const Sidebar = () => {
                     src={assets.menu_icon}
                     className="menu"
                     alt="menu-icon"
-                    onClick={() => {
-                        setExtended((prev) => !prev);
-                    }}
+                    onClick={toggleSidebar} // Toggle sidebar on menu icon click
                 />
-                <div className="new-chat">
-                    <img src={assets.plus_icon} alt="" onClick={() => {
-                        newChat();
-                    }} />
-                    {extended ? <p>New Chat</p> : null}
-                </div>
-                <AnimatePresence>
-                    {extended && (
-                        <motion.div
-                            className="recent"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        >
-                            <p className="recent-title">Recent</p>
-                            {prevPrompts.map((item, index) => (
-                                <div key={index} onClick={() => {
-                                    loadPreviousPrompt(item);
-                                }} className="recent-entry">
-                                    <img src={assets.message_icon} alt="" />
-                                    <p>{item.slice(0, 18)}...</p>
-                                </div>
-                            ))}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {extended && (
+                    <>
+                        <div className="new-chat" onClick={newChat}>
+                            <img src={assets.plus_icon} alt="" />
+                            <p>New Chat</p>
+                        </div>
+                        <AnimatePresence>
+                            <motion.div
+                                className="recent"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            >
+                                <p className="recent-title">Recent</p>
+                                {prevPrompts.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        onClick={() => loadPreviousPrompt(item)}
+                                        className="recent-entry"
+                                    >
+                                        <img src={assets.message_icon} alt="" />
+                                        <p>{item.slice(0, 18)}...</p>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
+                    </>
+                )}
             </div>
-            <div className="bottom">
-                <div className="bottom-item recent-entry">
-                    <img src={assets.question_icon} alt="" />
-                    {extended ? <p>Help</p> : null}
+            {extended && (
+                <div className="bottom">
+                    <div className="bottom-item recent-entry">
+                        <img src={assets.question_icon} alt="" />
+                        <p>Help</p>
+                    </div>
+                    <div className="bottom-item recent-entry">
+                        <img src={assets.history_icon} alt="" />
+                        <p>Activity</p>
+                    </div>
+                    <div className="bottom-item recent-entry">
+                        <img src={assets.setting_icon} alt="" />
+                        <p>Settings</p>
+                    </div>
                 </div>
-                <div className="bottom-item recent-entry">
-                    <img src={assets.history_icon} alt="" />
-                    {extended ? <p>Activity</p> : null}
-                </div>
-                <div className="bottom-item recent-entry">
-                    <img src={assets.setting_icon} alt="" />
-                    {extended ? <p>Settings</p> : null}
-                </div>
-            </div>
+            )}
         </motion.div>
     );
 };
