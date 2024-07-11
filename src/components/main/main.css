@@ -85,12 +85,11 @@
 }
 
 .main-bottom {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     max-width: 900px;
-    padding: 0px 20px;
+    padding: 10px 20px; /* Adjusted padding */
     margin: auto;
+    box-sizing: border-box;
 }
 
 .search-box {
@@ -211,7 +210,9 @@
     }
 
     .main-bottom {
-        padding: 0 10px; /* Reduce padding */
+        padding: 10px; /* Reduce padding */
+        position: relative; /* Adjust position */
+        bottom: auto; /* Reset absolute positioning */
     }
 
     .search-box {
@@ -235,5 +236,9 @@
 
     .main .bottom-info {
         font-size: 11px; /* Adjust bottom info font size */
+    }
+
+    .result {
+        max-height: 50vh; /* Adjust max height of result section */
     }
 }

@@ -73,6 +73,12 @@
 
 @media (max-width: 600px) {
     .sidebar {
-        display: none;
+        width: 80px; /* Adjusted width for mobile */
+    }
+}
+
+@media (min-width: 601px) {
+    .sidebar {
+        width: 250px; /* Adjusted width for desktop */
     }
 }
